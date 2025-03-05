@@ -1,4 +1,4 @@
-# roku_freewind_gameEngine-Example
-A basic game using the [roku_freewind_gameEngine](https://github.com/popovfreewind/roku_freewind_gameEngine) project
+# roku_FreeWind_gameEngine-Example
+A basic game using the [roku_FreeWind_gameEngine](https://github.com/popovfreewind/roku_FreeWind_gameEngine) project
 
-After cloning this repo, be sure to run `git submodule update --init --recursive` to also pull the code for the roku_freewind_gameEngine. 
+After cloning this repo, be sure to run `git submodule update --init --recursive` to also pull the code for the roku_FreeWind_gameEngine. 
