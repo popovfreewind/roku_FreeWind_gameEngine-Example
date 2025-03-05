@@ -20,6 +20,7 @@
                 "manifest",
                 "sounds/**/*.*",
                 "images/**/*.*",
+                "sprites/**/*.*",
                 "fonts/**/*.*",
                 "source/**/*.*",
             ],
