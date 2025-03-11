@@ -9,16 +9,16 @@ function obj_player(object)
 	object.onCreate = function(args)
 		m.y = m.game.getCanvas().GetHeight() / 2
 
-		bm_paddle = m.game.getBitmap("paddle")
-		m.width = bm_paddle.GetWidth()
-		m.height = bm_paddle.GetHeight()
+		image = m.addImage("main", { bitmapName: "paddle" })
+
+		m.width = image.GetWidth()
+		m.height = image.GetHeight()
 		m.addColliderRectangle("front", m.width / 2 - 1, -m.height / 2, 1, m.height)
 		m.addColliderRectangle("top", -m.width / 2, -m.height / 2, m.width, 1)
 		m.addColliderRectangle("bottom", -m.width / 2, m.height / 2 - 1, m.width, 1)
 
-		region = CreateObject("roRegion", bm_paddle, 0, 0, m.width, m.height)
+		region = image.GetRegion()
 		region.SetPretranslation(-m.width / 2, -m.height / 2)
-		m.addImage("main", region)
 	end function
 
 	object.onUpdate = function(dt)
@@ -35,13 +35,19 @@ function obj_player(object)
 	object.onButton = function(code as integer)
 		if code = 2 ' Up Pressed
 			m.yspeed = -3.5
+			return true
 		else if code = 102 ' Up Released
 			m.yspeed = 0
+			return true
 		else if code = 3 ' Down Pressed
 			m.yspeed = 3.5
+			return true
 		else if code = 103 ' Down Released
 			m.yspeed = 0
+			return true
 		end if
+
+		return false
 
 		' -------Button Code Reference--------
 		' Pressed | Released | Held

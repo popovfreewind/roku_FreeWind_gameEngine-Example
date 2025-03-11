@@ -3,16 +3,28 @@ function obj_pause_handler(object)
 	object.onCreate = function(args)
 		m.persistent = true
 		m.pauseable = false
+		m.addLabel("paused", {
+			color: &hffffff
+			fontSize: 50
+			fontName: "default"
+			x: 640, y: 350
+			text: "Paused"
+			enabled: false
+		})
 	end function
 
 	object.onButton = function(code as integer)
 		if code = 13 then
 			if not m.game.isPaused() then
+				m.labelsAA["press_ok"].enabled = true
 				m.game.Pause()
 			else
+				m.labelsAA["press_ok"].enabled = false
 				m.game.Resume()
 			end if
+			return true
 		end if
+		return false
 
 		' -------Button Code Reference--------
 		' Pressed | Released | Held
@@ -28,12 +40,6 @@ function obj_pause_handler(object)
 		' Fast  Forward  9  109 1009
 		' Info  10  110 1010
 		' Play  13  113 1013
-	end function
-
-	object.onDrawBegin = function(canvas as object)
-		if m.game.isPaused() then
-			DrawText(canvas, "Paused", canvas.GetWidth() / 2, canvas.GetHeight() / 2 - 20, m.game.getFont("default"), "center")
-		end if
 	end function
 
 end function

@@ -15,11 +15,10 @@ function obj_ball(object)
 			m.yspeed *= -1
 		end if
 
-		bm_ball = m.game.getBitmap("ball")
-		region = CreateObject("roRegion", bm_ball, 0, 0, bm_ball.GetWidth(), bm_ball.GetHeight())
-		region.SetPretranslation(-bm_ball.GetWidth() / 2, -bm_ball.GetHeight() / 2)
-		m.addImage("main", region, {color: &hffffff, alpha: 0})
-		m.addColliderRectangle("main_collider", -bm_ball.GetWidth() / 2, -bm_ball.GetHeight() / 2, bm_ball.GetWidth(), bm_ball.GetHeight())
+		ball = m.addImage("main", { bitmapName: "ball", opacity: 0 })
+		ball.getRegion().SetPretranslation(-ball.GetWidth() / 2, -ball.GetHeight() / 2)
+
+		m.addColliderRectangle("main_collider", -ball.GetWidth() / 2, -ball.GetHeight() / 2, ball.GetWidth(), ball.GetHeight())
 	end function
 
 	object.onCollision = function(collider_name as string, other_collider_name as string, other_instance as object)
@@ -58,9 +57,10 @@ function obj_ball(object)
 		image = m.getImage("main")
 		collider = m.getCollider("main_collider")
 
-		' Increase alpha until full if not at full
-		if image.alpha < 255 then
-			image.alpha += 3
+		' Increase opacity until full if not at full
+		if image.opacity < 1 then
+			image.opacity += 0.05
+			if image.opacity > 1 then image.opacity = 1
 		end if
 
 		' If the left side of the ball is past the center of the player paddle position
@@ -69,7 +69,7 @@ function obj_ball(object)
 			if m.x <= -100
 				m.game.postGameEvent("score", {team: 1})
 				m.game.destroyInstance(m)
-				return void ' If an entity destroys itself it must return immediately as all internal variables are now invalid
+				return invalid ' If an entity destroys itself it must return immediately as all internal variables are now invalid
 			end if
 		end if
 
@@ -79,7 +79,7 @@ function obj_ball(object)
 			if m.x >= 1280 + 100
 				m.game.postGameEvent("score", {team: 0})
 				m.game.destroyInstance(m)
-				return void ' If an entity destroys itself it must return immediately as all internal variables are now invalid
+				return invalid ' If an entity destroys itself it must return immediately as all internal variables are now invalid
 			end if
 		end if
 
