@@ -35,13 +35,19 @@ function obj_player(object)
 	object.onButton = function(code as integer)
 		if code = 2 ' Up Pressed
 			m.yspeed = -3.5
+			return true
 		else if code = 102 ' Up Released
 			m.yspeed = 0
+			return true
 		else if code = 3 ' Down Pressed
 			m.yspeed = 3.5
+			return true
 		else if code = 103 ' Down Released
 			m.yspeed = 0
+			return true
 		end if
+
+		return false
 
 		' -------Button Code Reference--------
 		' Pressed | Released | Held

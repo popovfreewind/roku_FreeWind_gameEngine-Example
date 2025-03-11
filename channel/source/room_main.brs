@@ -9,9 +9,18 @@ function room_main(object)
 		m.ball_spawn_timer = CreateObject("roTimespan")
 		m.ball_direction = -1
 		m.ball = invalid
+		m.addLabel("press_ok", {
+			color: &hffffff
+			fontSize: 50
+			fontName: "default"
+			x: 640, y: 350
+			text: "Press OK To Play"
+			enabled: false
+		})
 	end function
 
 	object.onUpdate = function(dt)
+		m.labelsAA["press_ok"].enabled = not m.game_started
 		if m.game_started and m.ball = invalid and m.ball_spawn_timer.TotalMilliseconds() > 1000
 			m.ball = m.game.createInstance("ball", {direction: m.ball_direction})
 		end if
@@ -20,9 +29,6 @@ function room_main(object)
 	object.onDrawBegin = function(canvas)
 		canvas.DrawRect(0, 0, 1280, 50, &hFFFFFFFF)
 		canvas.DrawRect(0, 720-50, 1280, 50, &hFFFFFFFF)
-		if not m.game_started then
-			DrawText(canvas, "Press OK To Play", canvas.GetWidth()/2, canvas.GetHeight()/2-20, m.game.getFont("default"), "center")
-		end if
 	end function
 
 	object.onButton = function(button)
@@ -31,7 +37,9 @@ function room_main(object)
 		end if
 		if not m.game_started and button = 6 then
 			m.game_started = true
+			return true
 		end if
+		return false
 	end function
 
 	object.onGameEvent = function(event as string, data as object)
