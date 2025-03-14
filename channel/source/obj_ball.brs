@@ -19,6 +19,7 @@ function obj_ball(object)
 		ball.getRegion().SetPretranslation(-ball.GetWidth() / 2, -ball.GetHeight() / 2)
 
 		m.addColliderRectangle("main_collider", -ball.GetWidth() / 2, -ball.GetHeight() / 2, ball.GetWidth(), ball.GetHeight())
+		m.game.loadSound("hit", "pkg:/sounds/hit.wav")
 	end function
 
 	object.onCollision = function(collider_name as string, other_collider_name as string, other_instance as object)
