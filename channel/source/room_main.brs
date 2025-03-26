@@ -14,6 +14,7 @@ function room_main(object)
 			fontSize: 50
 			fontName: "default"
 			x: 640, y: 350
+            align: "center"
 			text: "Press OK To Play"
 			enabled: false
 		})
@@ -32,10 +33,10 @@ function room_main(object)
 	end function
 
 	object.onButton = function(button)
-		if button = 0 then
+		if button = buttonCodes("back")
 			m.game.End()
 		end if
-		if not m.game_started and button = 6 then
+		if not m.game_started and button = buttonCodes("ok")
 			m.game_started = true
 			return true
 		end if

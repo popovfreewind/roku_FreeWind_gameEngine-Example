@@ -9,8 +9,8 @@ function obj_ball(object)
 		m.direction = args.direction
 		m.x = 1280 / 2
 		m.y = 720 / 2
-		m.xspeed = 5.5 * m.direction
-		m.yspeed = 5
+		m.xspeed = 200.5 * m.direction
+		m.yspeed = 200
 		if rnd(2) = 1
 			m.yspeed *= -1
 		end if

@@ -11,6 +11,7 @@ function obj_score_handler(object)
 			fontSize: 50
 			fontName: "default"
 			x: 440, y: 100
+            align: "center"
             text: "0"
 		})
 		m.addLabel("computer_score", {
@@ -18,6 +19,7 @@ function obj_score_handler(object)
 			fontSize: 50
 			fontName: "default"
 			x: 840, y: 100
+            align: "center"
             text: "0"
 		})
     end function
