@@ -9,7 +9,7 @@ function obj_player(object)
 	object.onCreate = function(args)
 		m.y = m.game.getCanvas().GetHeight() / 2
 
-		image = m.addImage("main", { bitmapName: "paddle" })
+		image = m.addRandomNameImage({ bitmapName: "paddle" })
 
 		m.width = image.GetWidth()
 		m.height = image.GetHeight()
