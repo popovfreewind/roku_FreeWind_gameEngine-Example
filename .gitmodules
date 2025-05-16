@@ -1,3 +1,3 @@
 [submodule "channel/source/roku_FreeWind_gameEngine"]
 	path = channel/source/roku_FreeWind_gameEngine
-	url = https://github.com/popovfreewind/roku_FreeWind_gameEngine
+	url = https://github.com/popovfreewind/roku_FreeWind_gameEngine.git
